@@ -23,7 +23,11 @@ export const ArrowButton = ({ onClick }: { onClick: OnClick }) => {
 			tabIndex={0}
 			className={clsx(styles.container, { [styles.container_open]: isOpen })}
 			onClick={handleClick}>
-			<img src={arrow} alt='иконка стрелочки' className={styles.arrow} />
+			<img
+				src={arrow}
+				alt='иконка стрелочки'
+				className={clsx(styles.arrow, { [styles.arrow_open]: isOpen })}
+			/>
 		</div>
 	);
 };
