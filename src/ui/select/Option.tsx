@@ -21,10 +21,11 @@ export const Option = (props: OptionProps) => {
 	const optionRef = useRef<HTMLLIElement>(null);
 
 	const handleClick =
-		(clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
-		() => {
-			onClick(clickedValue);
-		};
+	(clickedValue: OptionType['value']): MouseEventHandler<HTMLLIElement> =>
+	(event) => {
+		event.stopPropagation();
+		onClick(clickedValue);
+	};
 
 	useEnterOptionSubmit({
 		optionRef,
