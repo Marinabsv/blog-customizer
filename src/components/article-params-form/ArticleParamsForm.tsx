@@ -58,6 +58,7 @@ export const ArticleParamsForm = ({ changedSettings }: FormProps) => {
 				onClick={() => {
 					setMenuOpen(!menuOpen);
 				}}
+				isMenuOpen={menuOpen}
 			/>
 			<aside
 				className={clsx(styles.container, menuOpen && styles.container_open)}>
