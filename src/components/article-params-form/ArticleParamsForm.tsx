@@ -20,10 +20,10 @@ import { Text } from 'src/ui/text';
 import clsx from 'clsx';
 
 type FormProps = {
-	changedSettings: (newState: ArticleStateType) => void;
+	changeSettings: (newState: ArticleStateType) => void;
 };
 
-export const ArticleParamsForm = ({ changedSettings }: FormProps) => {
+export const ArticleParamsForm = ({ changeSettings }: FormProps) => {
 	const [setting, setSetting] = useState<ArticleStateType>(defaultArticleState);
 	const [menuOpen, setMenuOpen] = useState(false);
 	const formRef = useRef<HTMLDivElement>(null);
@@ -36,14 +36,14 @@ export const ArticleParamsForm = ({ changedSettings }: FormProps) => {
 			}));
 		};
 
-	const paramsFormReset = () => {
+	const handleReset = () => {
 		setSetting(defaultArticleState);
-		changedSettings(defaultArticleState);
+		changeSettings(defaultArticleState);
 	};
 
-	const paramsFormSubmit = (e: React.FormEvent) => {
+	const handleSubmit = (e: React.FormEvent) => {
 		e.preventDefault();
-		changedSettings(setting);
+		changeSettings(setting);
 	};
 
 	useOutsideClickClose({
@@ -62,7 +62,7 @@ export const ArticleParamsForm = ({ changedSettings }: FormProps) => {
 			/>
 			<aside
 				className={clsx(styles.container, menuOpen && styles.container_open)}>
-				<form className={styles.form} onSubmit={paramsFormSubmit}>
+				<form className={styles.form} onSubmit={handleSubmit}>
 					<Text as='h2' weight={800} size={31} align='left' uppercase>
 						Задайте параметры
 					</Text>
@@ -100,7 +100,7 @@ export const ArticleParamsForm = ({ changedSettings }: FormProps) => {
 					/>
 
 					<div className={styles.bottomContainer}>
-						<Button title='Сбросить' type='clear' onClick={paramsFormReset} />
+						<Button title='Сбросить' type='clear' onClick={handleReset} />
 						<Button title='Применить' type='apply' />
 					</div>
 				</form>
